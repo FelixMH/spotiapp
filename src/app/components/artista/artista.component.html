@@ -1,0 +1,53 @@
+<app-loading class="m-5" *ngIf="loading"></app-loading>
+
+<div class="row animated fadeIn" *ngIf="!loading">
+    <div class="col-2">
+        <img class="img-thumb img-circle" [src]="artist.images | noimage" alt="artist.name" />
+    </div>
+
+    <div class="col">
+        <h3> {{ artist.name }} </h3>
+
+        <span>
+          <i> Cantidad de seguidores: <span> {{ artist.followers.total }} </span> </i>
+        </span>
+
+        <p>
+            <a [href]="artist.external_urls.spotify" target="_blank" rel="noopener noreferrer">
+              ir a la página del artista
+            </a>
+        </p>
+
+    </div>
+
+    <div class="col-4 text-right">
+        <button routerLink="/search" class="btn btn-outline-danger"> Regresar </button>
+    </div>
+
+    <div class="row m-5">
+        <div class="col">
+            <table class="table" style="color: #fff;">
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Álbum</th>
+                        <th>Canción</th>
+                        <th>Vista Previa</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let info of topTracks" class="animated fadeIn">
+                        <td> <img [src]="info.album.images | noimage" class="img-thumb"> </td>
+                        <td>{{ info.album.name }}</td>
+                        <td>{{ info.name }}</td>
+                        <td>
+                            <iframe class="animated fadeIn" [src]="info.uri | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

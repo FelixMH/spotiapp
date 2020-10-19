@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "spotclone"
+    }
+  },
+  "defaultProject": "spotclone",
+  "cli": {
+    "analytics": false
+  }
 }
